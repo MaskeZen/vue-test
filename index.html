@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VUE test</title>
+</head>
+<body>
+    <div id="root" >
+        
+        <h1 :class="tituloMaestro">Titulo de pruebas</h1>
+
+        <p>{{tiempo}}</p>
+
+        <button :title="botonTitle">Botón de pruebas</button>
+
+        <p>El valor del input es: {{message}}</p>
+        
+        <ul>
+            <li v-for="nombre in nombres" v-text="nombre" ></li>
+        </ul>
+
+        
+        <h2>Tareas</h2>
+        <ul>
+            <li v-for="tarea in tareas" v-text="tarea.descripcion"></li>
+        </ul>
+
+        <h3>Incompletas</h3>
+        <ul>
+            <li v-for="tarea in tareasIncompletas" v-text="tarea.descripcion"></li>
+        </ul>
+        
+        <input type="text" v-model="nuevoNombre" >
+        <button @click="agregarNombre" >Agregar nombre</button>
+
+    </div>
+    
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        // document.querySelector('#my-input').value = data.message;
+
+        new Vue({
+            el: '#root',
+            data: {
+                botonTitle: 'titulo de pruebas',
+                message: 'hello World!',
+                nuevoNombre: '',
+                nombres: ['peteco', 'Garcia', 'Luis', 'Tommy'],
+                tiempo: new Date(),
+                tareas: [
+                    { descripcion: 'prueba de tarea', completa: true },
+                    { descripcion: 'parcial OS', completa: false },
+                    { descripcion: 'parcial adminf', completa: true },
+                    { descripcion: 'examen redes', completa: false },
+                    { descripcion: 'clase vue', completa: false },
+                    { descripcion: 'mario cedrani', completa: true },
+
+                ]
+            },
+            methods: {
+                agregarNombre() {
+                    this.nombres.push(this.nuevoNombre)
+                    this.nuevoNombre = ''
+                }
+            },
+            computed: {
+                tareasIncompletas() {
+                    return this.tareas.filter(t => !t.completa)
+                }
+            }
+        })
+
+        // document.querySelector('#button').addEventListener('click', () => {
+        //     let name = document.querySelector('#input')
+        // })
+
+    </script>
+</body>
+</html>
