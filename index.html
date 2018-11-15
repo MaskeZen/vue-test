@@ -14,8 +14,44 @@
 </head>
 <body>
     <div id="root" class="container" >
-        <h1>Pruebas con vue</h1>
+        <h1 class="title">Pruebas con vue</h1>
 
+        <h2 class="title">Eventos</h2>
+        
+        <tabs>
+
+            <tab name="About Us" :selected="true">
+                <h1>Sobre nosotros</h1>
+                <p>
+                    The modal structure is very simple:
+
+                    modal: the main container
+                    modal-background: a transparent overlay that can act as a click target to close the modal
+                    modal-content: a horizontally and vertically centered container, with a maximum width of 640px, in which you can include any content
+                    modal-close: a simple cross located in the top right corner
+                    
+                </p>
+            </tab>
+
+            <tab name="About our culture">
+                <h1>Cultura</h1>
+                <p>
+                    Cultura (del latín cultūra​​) es un término que tiene muchos significados interrelacionados.
+                </p>
+            </tab>
+
+            <tab name="About our vision">
+                <h1>Contenido de la tab</h1>
+                <p>
+                    La visión de la compañía es convertirse en la productora de automóviles de mejor calidad del mercado local”.
+                </p>
+                <p>La visión depende de la situación presente, de las posibilidades materiales presentes y futuras tal y como las perciba la organización, de los eventos inesperados que puedan ocurrir y de la propia misión que ya se haya plateado.</p>
+            </tab>
+
+        </tabs>
+
+
+        <h2 class="title">Eventos</h2>
 
         <modal v-if="showModal" @close="showModal = false" >
             <p>
@@ -27,9 +63,14 @@
 
         <button @click="showModal = true">Mostrar Modal</button>
 
+
+        <h2 class="title">Nested components</h2>
+
         <message title="Hello World!" body="bla bla bla..." ></message>
         <message title="Mensaje 2" body="bla bla bla..."  ></message>
         <message title="Otro mensaje" body="bla bla bla..."  ></message>
+
+        <h2 class="title">componente base</h2>
 
         <task-list></task-list>
     </div>
