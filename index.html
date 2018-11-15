@@ -5,10 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VUE test</title>
+    <link rel="stylesheet" href="css/bulma.css">
+    <style>
+        body {
+            padding: 2em;
+        }
+    </style>
 </head>
 <body>
-    <div id="root" >
+    <div id="root" class="container" >
         <h1>Pruebas con vue</h1>
+
+
+        <modal v-if="showModal" @close="showModal = false" >
+            <p>
+                You are running Vue in development mode.
+                Make sure to turn on production mode when deploying for production.
+                See more tips at https://vuejs.org/guide/deployment.html
+            </p>
+        </modal>
+
+        <button @click="showModal = true">Mostrar Modal</button>
+
+        <message title="Hello World!" body="bla bla bla..." ></message>
+        <message title="Mensaje 2" body="bla bla bla..."  ></message>
+        <message title="Otro mensaje" body="bla bla bla..."  ></message>
+
         <task-list></task-list>
     </div>
     
